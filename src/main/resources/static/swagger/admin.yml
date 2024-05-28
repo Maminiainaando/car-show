@@ -1,7 +1,7 @@
 openapi: '3.0.2'
 info:
   title: Admin Management API
-  description: API pour gérer les admins
+  description: API pour gérer les admins, y compris l'authentification
   version: 1.0.0
 servers:
   - url: http://localhost:8080
@@ -33,6 +33,32 @@ paths:
       responses:
         '200':
           description: Admin ajouté avec succès
+  /login:
+    post:
+      summary: Authentifier un admin
+      description: Authentifie un admin avec email et mot de passe
+      requestBody:
+        description: Informations de connexion de l'admin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginForm'
+      responses:
+        '200':
+          description: Information correcte
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Information correct
+        '401':
+          description: Mauvaises informations
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: bad Information
 components:
   schemas:
     Admin:
@@ -41,11 +67,22 @@ components:
         name:
           type: string
           description: Nom de l'admin
-          example: John Doe
+          example: Romeo Bonarson
         email:
           type: string
           description: Email de l'admin
-          example: johndoe@example.com
+          example: Bonarson@example.com
+        password:
+          type: string
+          description: Mot de passe de l'admin
+          example: password123
+    LoginForm:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email de l'admin
+          example: Bonarson@example.com
         password:
           type: string
           description: Mot de passe de l'admin
