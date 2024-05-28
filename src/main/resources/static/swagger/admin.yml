@@ -1,0 +1,52 @@
+openapi: '3.0.2'
+info:
+  title: Admin Management API
+  description: API pour gérer les admins
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /account/admin:
+    get:
+      summary: Récupérer la liste de tous les admins
+      description: Renvoie une liste de tous les admins
+      responses:
+        '200':
+          description: Liste des admins récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Admin'
+  /account/add:
+    post:
+      summary: Ajouter un nouvel admin
+      description: Ajoute un nouvel admin
+      requestBody:
+        description: Admin à ajouter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Admin'
+      responses:
+        '200':
+          description: Admin ajouté avec succès
+components:
+  schemas:
+    Admin:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nom de l'admin
+          example: John Doe
+        email:
+          type: string
+          description: Email de l'admin
+          example: johndoe@example.com
+        password:
+          type: string
+          description: Mot de passe de l'admin
+          example: password123
