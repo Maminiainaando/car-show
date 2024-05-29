@@ -27,9 +27,26 @@ public class CarService implements CarRepository {
         List<Car> cars = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(" select * from car ")){
+             ResultSet resultSet = statement.executeQuery(" SELECT \n" +
+                     "    c.id_car, \n" +
+                     "    c.car_name, \n" +
+                     "    c.model, \n" +
+                     "    c.price, \n" +
+                     "    c.color, \n" +
+                     "    c.motor_type, \n" +
+                     "    c.power, \n" +
+                     "    c.place_number, \n" +
+                     "    c.status, \n" +
+                     "    c.type_car, \n" +
+                     "    i.url \n" +
+                     "FROM \n" +
+                     "    car c \n" +
+                     "INNER JOIN \n" +
+                     "    image i \n" +
+                     "ON \n" +
+                     "    i.id_car = c.id_car;\n ")){
             while (resultSet.next()){
-                cars.add(new Car(resultSet.getInt("id_car"),resultSet.getString("car_name"), resultSet.getString("model"), resultSet.getFloat("price"), resultSet.getString("color"),resultSet.getString("motor_type"), resultSet.getString("power"),resultSet.getInt("place_number"),resultSet.getString("status"),resultSet.getString("type_car")));
+                cars.add(new Car(resultSet.getInt("id_car"),resultSet.getString("car_name"), resultSet.getString("model"), resultSet.getFloat("price"), resultSet.getString("color"),resultSet.getString("motor_type"), resultSet.getString("power"),resultSet.getInt("place_number"),resultSet.getString("status"),resultSet.getString("type_car"),resultSet.getString("url")));
             }
 
 

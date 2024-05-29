@@ -11,8 +11,9 @@ public class Car {
     private int placeNumber;
     private String status;
     private String typeCar;
+    private  String url;
 
-    public Car(int idCar, String carName, String model, float price, String color, String motorType, String power, int placeNumber, String status, String typeCar) {
+    public Car(int idCar, String carName, String model, float price, String color, String motorType, String power, int placeNumber, String status, String typeCar, String url) {
         this.idCar = idCar;
         this.carName = carName;
         this.model = model;
@@ -23,10 +24,19 @@ public class Car {
         this.placeNumber = placeNumber;
         this.status = status;
         this.typeCar = typeCar;
+        this.url = url;
     }
 
     public int getIdCar() {
         return idCar;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setIdCar(int idCar) {
