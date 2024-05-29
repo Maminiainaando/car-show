@@ -1,6 +1,7 @@
 package com.backend.web3.car.demo.backend.car.web3.model;
 
 public class Car {
+    private int idCar;
     private String carName;
     private String model;
     private float price;
@@ -11,7 +12,8 @@ public class Car {
     private String status;
     private String typeCar;
 
-    public Car(String carName, String model, float price, String color, String motorType, String power, int placeNumber, String status, String typeCar) {
+    public Car(int idCar, String carName, String model, float price, String color, String motorType, String power, int placeNumber, String status, String typeCar) {
+        this.idCar = idCar;
         this.carName = carName;
         this.model = model;
         this.price = price;
@@ -21,6 +23,14 @@ public class Car {
         this.placeNumber = placeNumber;
         this.status = status;
         this.typeCar = typeCar;
+    }
+
+    public int getIdCar() {
+        return idCar;
+    }
+
+    public void setIdCar(int idCar) {
+        this.idCar = idCar;
     }
 
     public String getCarName() {
