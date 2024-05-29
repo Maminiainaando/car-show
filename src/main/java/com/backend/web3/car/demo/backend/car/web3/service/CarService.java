@@ -28,7 +28,7 @@ public class CarService implements CarRepository {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(" select * from car ")){
             while (resultSet.next()){
-                cars.add(new Car(resultSet.getString("car_name"), resultSet.getString("model"), resultSet.getFloat("price"), resultSet.getString("color"),resultSet.getString("motor_type"), resultSet.getString("power"),resultSet.getInt("place_number"),resultSet.getString("status"),resultSet.getString("type_car")));
+                cars.add(new Car(resultSet.getInt("id_car"),resultSet.getString("car_name"), resultSet.getString("model"), resultSet.getFloat("price"), resultSet.getString("color"),resultSet.getString("motor_type"), resultSet.getString("power"),resultSet.getInt("place_number"),resultSet.getString("status"),resultSet.getString("type_car")));
             }
 
 
