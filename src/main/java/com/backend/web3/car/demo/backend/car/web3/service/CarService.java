@@ -1,5 +1,6 @@
 package com.backend.web3.car.demo.backend.car.web3.service;
 
+import com.backend.web3.car.demo.backend.car.web3.dao.DbConnection;
 import com.backend.web3.car.demo.backend.car.web3.model.Car;
 import com.backend.web3.car.demo.backend.car.web3.repository.CarRepository;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,22 @@ public class CarService implements CarRepository {
         }
 
         return cars;
+    }
+
+    @Override
+    public void addCar(String message, Car car) {
+        Statement statement;
+        DbConnection dbConnection = new DbConnection();
+        Connection conn = dbConnection.conn_db("car_show");
+        try {
+            String query = String.format("insert into car(car_name,model,price,color,motor_type,power,place_number,status,type_car) values ('%s', '%s', '%s','%s', '%s', '%s','%s', '%s', '%s');",car.getCarName(),car.getModel(),car.getPrice(),car.getColor(),car.getMotorType(),car.getPower(),car.getPlaceNumber(),"Pinned",car.getTypeCar());
+            statement = conn.createStatement();
+            statement.executeUpdate(query);
+
+            System.out.println("New Car  save ✔");
+
+        } catch (Exception e) {
+            throw new RuntimeException(" fix it ",e);
+        }
     }
 }
