@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CarRepository {
     List<Car> getAllCar();
+    void addCar(String message, Car car);
 
 }
