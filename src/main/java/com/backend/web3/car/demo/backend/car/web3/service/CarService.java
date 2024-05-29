@@ -2,6 +2,7 @@ package com.backend.web3.car.demo.backend.car.web3.service;
 
 import com.backend.web3.car.demo.backend.car.web3.model.Car;
 import com.backend.web3.car.demo.backend.car.web3.repository.CarRepository;
+import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CarService implements CarRepository {
 
     private final DataSource dataSource;
