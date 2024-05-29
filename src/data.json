@@ -1,0 +1,300 @@
+{
+    "admin": [
+      {
+        "email":"hei.maminiaina.@gmail.com",
+        "password": "1234"
+      },
+      {
+        "email":"hei.maminiaina.@gmail.com",
+        "password": "1234"
+      },
+      {
+        "email":"hei.maminiaina.@gmail.com",
+        "password": "1234"
+      },
+      {
+        "email":"hei.maminiaina.@gmail.com",
+        "password": "abcd"
+      },
+      {
+        "email":"hei.maminiaina.@gmail.com",
+        "password": "1234"
+      }
+    ],
+    "car":[
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      },
+      {
+        "name": "toyota",
+        "description":"bon état et ....",
+        "Brand":"toyota",
+        "Model":"2004",
+        "Price":"100Ar",
+        "Color":"violet",
+        "Motor Type":"perfect",
+        "Power":"on",
+        "Place number":"5",
+        "Status":"Pinned",
+        "Type":"familial"
+      }
+    ]
+  }
+  

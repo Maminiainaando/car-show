@@ -1,14 +1,13 @@
-'use client'
-import { createContext } from 'react'
- 
+"use client"
 import React from 'react'
-import { Admin } from 'react-admin'
+import { AdminList } from '../../../components/List/AdminList'
 
 export default function AdminPage() {
   return (
-    <Admin>
-      
-    </Admin>
+    <div>
+      <AdminList />
+    </div>
   )
 }
+
 
