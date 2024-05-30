@@ -1,13 +1,7 @@
-"use client"
-import React from 'react'
-import { AdminList } from '../../../components/List/AdminList'
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
+const AdminApp = dynamic(()=>import ("../../../components/admin/AdminApp"), {ssr: false});
+const Home: NextPage = () =>
+    <AdminApp />
 
-export default function AdminPage() {
-  return (
-    <div>
-      <AdminList />
-    </div>
-  )
-}
-
-
+export default Home;
