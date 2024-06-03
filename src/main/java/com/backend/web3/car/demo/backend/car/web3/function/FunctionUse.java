@@ -1,8 +1,13 @@
 package com.backend.web3.car.demo.backend.car.web3.function;
 
+import com.backend.web3.car.demo.backend.car.web3.model.Car;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FunctionUse {
     public int readIdCarForImage(Connection conn) {
@@ -23,4 +28,61 @@ public class FunctionUse {
         }
         return id;
     }
+
+    public List<Car> getCarByType(Connection conn, String typeCar) {
+        List<Car> cars = new ArrayList<>();
+        Statement statement ;
+        ResultSet rs = null;
+
+        try {
+            String query = """
+            SELECT 
+                c.id_car, 
+                c.car_name, 
+                c.model, 
+                c.price, 
+                c.color, 
+                c.motor_type, 
+                c.power, 
+                c.place_number, 
+                c.status, 
+                c.type_car, 
+                i.url 
+            FROM 
+                car c 
+            INNER JOIN 
+                image i 
+            ON 
+                i.id_car = c.id_car
+            WHERE 
+                c.type_car ILIKE '%s'
+            """.formatted("%" + typeCar + "%");
+
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+
+            while (rs.next()) {
+                cars.add(new Car(
+                        rs.getInt("id_car"),
+                        rs.getString("car_name"),
+                        rs.getString("model"),
+                        rs.getFloat("price"),
+                        rs.getString("color"),
+                        rs.getString("motor_type"),
+                        rs.getString("power"),
+                        rs.getInt("place_number"),
+                        rs.getString("status"),
+                        rs.getString("type_car"),
+                        rs.getString("url")
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("fix it: ", e);
+        }
+
+        return cars;
+    }
+
+
+
 }
