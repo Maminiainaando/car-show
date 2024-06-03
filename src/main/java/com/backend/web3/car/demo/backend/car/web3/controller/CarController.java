@@ -26,6 +26,10 @@ public class CarController {
     public List<Car> getCarByType(@PathVariable String typeCare){
         return carService.getCarByType(typeCare);
     }
+    @GetMapping("/allCarByMinPrice")
+    public List<Car> getCarByMinPrice(){
+        return carService.getCarByMinPrice();
+    }
 
     @PostMapping("/carAdd")
     public ResponseEntity<Void> addCar(@RequestBody Car car) {
