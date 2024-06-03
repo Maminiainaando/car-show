@@ -114,4 +114,21 @@ public class Car {
     public void setTypeCar(String typeCar) {
         this.typeCar = typeCar;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "idCar=" + idCar +
+                ", carName='" + carName + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", color='" + color + '\'' +
+                ", motorType='" + motorType + '\'' +
+                ", power='" + power + '\'' +
+                ", placeNumber=" + placeNumber +
+                ", status='" + status + '\'' +
+                ", typeCar='" + typeCar + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
