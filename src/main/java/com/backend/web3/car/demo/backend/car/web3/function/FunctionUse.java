@@ -136,4 +136,63 @@ public class FunctionUse {
     }
 
 
+    public List<Car> getCarByMaxPrice(Connection conn) {
+        List<Car> cars = new ArrayList<>();
+        Statement statement;
+        ResultSet rs = null;
+
+        try {
+            String query = ("SELECT DISTINCT ON (c.car_name)\n" +
+                    "    c.id_car,\n" +
+                    "    c.car_name,\n" +
+                    "    c.model,\n" +
+                    "    c.price,\n" +
+                    "    c.color,\n" +
+                    "    c.motor_type,\n" +
+                    "    c.power,\n" +
+                    "    c.place_number,\n" +
+                    "    c.status,\n" +
+                    "    c.type_car,\n" +
+                    "    i.url\n" +
+                    "FROM \n" +
+                    "    car c\n" +
+                    "INNER JOIN image i \n" +
+                    "ON i.id_car = c.id_car\n" +
+                    "INNER JOIN (\n" +
+                    "    SELECT \n" +
+                    "        car_name,\n" +
+                    "        MAX(price) AS max_price\n" +
+                    "    FROM \n" +
+                    "        car\n" +
+                    "    GROUP BY \n" +
+                    "        car_name\n" +
+                    ") max_prices ON c.car_name = max_prices.car_name AND c.price = max_prices.max_price\n" +
+                    "ORDER BY \n" +
+                    "    c.car_name;");
+
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+
+            while (rs.next()) {
+                cars.add(new Car(
+                        rs.getInt("id_car"),
+                        rs.getString("car_name"),
+                        rs.getString("model"),
+                        rs.getFloat("price"),
+                        rs.getString("color"),
+                        rs.getString("motor_type"),
+                        rs.getString("power"),
+                        rs.getInt("place_number"),
+                        rs.getString("status"),
+                        rs.getString("type_car"),
+                        rs.getString("url")
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("fix it: ", e);
+        }
+
+        return cars;
+    }
+
 }
