@@ -5,10 +5,7 @@ import com.backend.web3.car.demo.backend.car.web3.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,10 @@ public class CarController {
     @GetMapping("/allCar")
     public List<Car> getAllCar() {
         return carService.getAllCar();
+    }
+    @GetMapping("/allCarByType/{typeCare}")
+    public List<Car> getCarByType(@PathVariable String typeCare){
+        return carService.getCarByType(typeCare);
     }
 
     @PostMapping("/carAdd")
