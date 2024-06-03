@@ -1,6 +1,7 @@
 package com.backend.web3.car.demo.backend.car.web3.service;
 
 import com.backend.web3.car.demo.backend.car.web3.dao.DbConnection;
+import com.backend.web3.car.demo.backend.car.web3.function.FunctionUse;
 import com.backend.web3.car.demo.backend.car.web3.model.Car;
 import com.backend.web3.car.demo.backend.car.web3.repository.CarRepository;
 import org.springframework.stereotype.Service;
@@ -44,9 +45,9 @@ public class CarService implements CarRepository {
                      "INNER JOIN \n" +
                      "    image i \n" +
                      "ON \n" +
-                     "    i.id_car = c.id_car;\n ")){
-            while (resultSet.next()){
-                cars.add(new Car(resultSet.getInt("id_car"),resultSet.getString("car_name"), resultSet.getString("model"), resultSet.getFloat("price"), resultSet.getString("color"),resultSet.getString("motor_type"), resultSet.getString("power"),resultSet.getInt("place_number"),resultSet.getString("status"),resultSet.getString("type_car"),resultSet.getString("url")));
+                     "    i.id_car = c.id_car;\n ")) {
+            while (resultSet.next()) {
+                cars.add(new Car(resultSet.getInt("id_car"), resultSet.getString("car_name"), resultSet.getString("model"), resultSet.getFloat("price"), resultSet.getString("color"), resultSet.getString("motor_type"), resultSet.getString("power"), resultSet.getInt("place_number"), resultSet.getString("status"), resultSet.getString("type_car"), resultSet.getString("url")));
             }
 
 
@@ -63,15 +64,22 @@ public class CarService implements CarRepository {
         Statement statement;
         DbConnection dbConnection = new DbConnection();
         Connection conn = dbConnection.conn_db("car_show");
+        FunctionUse fun = new FunctionUse();
         try {
-            String query = String.format("insert into car(car_name,model,price,color,motor_type,power,place_number,status,type_car) values ('%s', '%s', '%s','%s', '%s', '%s','%s', '%s', '%s');",car.getCarName(),car.getModel(),car.getPrice(),car.getColor(),car.getMotorType(),car.getPower(),car.getPlaceNumber(),"Pinned",car.getTypeCar());
+            String query = String.format("insert into car(car_name,model,price,color,motor_type,power,place_number,status,type_car) values ('%s', '%s', '%s','%s', '%s', '%s','%s', '%s', '%s');", car.getCarName(), car.getModel(), car.getPrice(), car.getColor(), car.getMotorType(), car.getPower(), car.getPlaceNumber(), "Pinned", car.getTypeCar());
             statement = conn.createStatement();
             statement.executeUpdate(query);
-
             System.out.println("New Car  save ✔");
 
+            int idCarInImage = fun.readIdCarForImage(conn);
+            String insertImage = String.format("insert into image(url,id_car)values('%s','%s');", car.getUrl(),idCarInImage);
+            statement = conn.createStatement();
+            statement.executeUpdate(insertImage);
+
+            System.out.println("image save ✔");
+
         } catch (Exception e) {
-            throw new RuntimeException(" fix it ",e);
+            throw new RuntimeException(" fix it ", e);
         }
     }
 }
