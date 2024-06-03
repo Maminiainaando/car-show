@@ -83,6 +83,62 @@ public class FunctionUse {
         return cars;
     }
 
+
+    public List<Car> getCarByMotorType(Connection conn, String typeMotor) {
+        List<Car> cars = new ArrayList<>();
+        Statement statement;
+        ResultSet rs = null;
+
+        try {
+            String query = """
+                    SELECT 
+                        c.id_car, 
+                        c.car_name, 
+                        c.model, 
+                        c.price, 
+                        c.color, 
+                        c.motor_type, 
+                        c.power, 
+                        c.place_number, 
+                        c.status, 
+                        c.type_car, 
+                        i.url 
+                    FROM 
+                        car c 
+                    INNER JOIN 
+                        image i 
+                    ON 
+                        i.id_car = c.id_car
+                        
+                    WHERE 
+                        c.motor_type ILIKE '%s' order by c.id_car desc
+                    """.formatted("%" + typeMotor + "%") ;
+
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+
+            while (rs.next()) {
+                cars.add(new Car(
+                        rs.getInt("id_car"),
+                        rs.getString("car_name"),
+                        rs.getString("model"),
+                        rs.getFloat("price"),
+                        rs.getString("color"),
+                        rs.getString("motor_type"),
+                        rs.getString("power"),
+                        rs.getInt("place_number"),
+                        rs.getString("status"),
+                        rs.getString("type_car"),
+                        rs.getString("url")
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("fix it: ", e);
+        }
+
+        return cars;
+    }
+
     public List<Car> getCarByMinPrice(Connection conn) {
         List<Car> cars = new ArrayList<>();
         Statement statement;
