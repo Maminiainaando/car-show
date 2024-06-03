@@ -31,32 +31,32 @@ public class FunctionUse {
 
     public List<Car> getCarByType(Connection conn, String typeCar) {
         List<Car> cars = new ArrayList<>();
-        Statement statement ;
+        Statement statement;
         ResultSet rs = null;
 
         try {
             String query = """
-            SELECT 
-                c.id_car, 
-                c.car_name, 
-                c.model, 
-                c.price, 
-                c.color, 
-                c.motor_type, 
-                c.power, 
-                c.place_number, 
-                c.status, 
-                c.type_car, 
-                i.url 
-            FROM 
-                car c 
-            INNER JOIN 
-                image i 
-            ON 
-                i.id_car = c.id_car
-            WHERE 
-                c.type_car ILIKE '%s'
-            """.formatted("%" + typeCar + "%");
+                    SELECT 
+                        c.id_car, 
+                        c.car_name, 
+                        c.model, 
+                        c.price, 
+                        c.color, 
+                        c.motor_type, 
+                        c.power, 
+                        c.place_number, 
+                        c.status, 
+                        c.type_car, 
+                        i.url 
+                    FROM 
+                        car c 
+                    INNER JOIN 
+                        image i 
+                    ON 
+                        i.id_car = c.id_car
+                    WHERE 
+                        c.type_car ILIKE '%s'
+                    """.formatted("%" + typeCar + "%");
 
             statement = conn.createStatement();
             rs = statement.executeQuery(query);
@@ -83,6 +83,57 @@ public class FunctionUse {
         return cars;
     }
 
+    public List<Car> getCarByMinPrice(Connection conn) {
+        List<Car> cars = new ArrayList<>();
+        Statement statement;
+        ResultSet rs = null;
+
+        try {
+            String query = (" SELECT DISTINCT ON (c.car_name)\n" +
+                    "    c.id_car,\n" +
+                    "    c.car_name,\n" +
+                    "    c.model,\n" +
+                    "    c.price,\n" +
+                    "    c.color,\n" +
+                    "    c.motor_type,\n" +
+                    "    c.power,\n" +
+                    "    c.place_number,\n" +
+                    "    c.status,\n" +
+                    "    c.type_car,\n" +
+                    "    i.url\n" +
+                    "FROM \n" +
+                    "    car c\n" +
+                    "    inner join image i \n" +
+                    "    on \n" +
+                    "    i.id_car = c.id_car\n" +
+                    "ORDER BY \n" +
+                    "    c.car_name, \n" +
+                    "    c.price; ");
+
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+
+            while (rs.next()) {
+                cars.add(new Car(
+                        rs.getInt("id_car"),
+                        rs.getString("car_name"),
+                        rs.getString("model"),
+                        rs.getFloat("price"),
+                        rs.getString("color"),
+                        rs.getString("motor_type"),
+                        rs.getString("power"),
+                        rs.getInt("place_number"),
+                        rs.getString("status"),
+                        rs.getString("type_car"),
+                        rs.getString("url")
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("fix it: ", e);
+        }
+
+        return cars;
+    }
 
 
 }
