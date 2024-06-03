@@ -68,6 +68,14 @@ public class CarService implements CarRepository {
     }
 
     @Override
+    public List<Car> getCarByMinPrice() {
+        DbConnection dbConnection = new DbConnection();
+        Connection conn = dbConnection.conn_db("car_show");
+        FunctionUse fun = new FunctionUse();
+        return fun.getCarByMinPrice(conn);
+    }
+
+    @Override
     public void addCar(String message, Car car) {
         Statement statement;
         DbConnection dbConnection = new DbConnection();
