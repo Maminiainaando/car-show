@@ -60,6 +60,14 @@ public class CarService implements CarRepository {
     }
 
     @Override
+    public List<Car> getCarByType(String typeCare) {
+        DbConnection dbConnection = new DbConnection();
+        Connection conn = dbConnection.conn_db("car_show");
+        FunctionUse fun = new FunctionUse();
+        return fun.getCarByType(conn, typeCare);
+    }
+
+    @Override
     public void addCar(String message, Car car) {
         Statement statement;
         DbConnection dbConnection = new DbConnection();
@@ -72,7 +80,7 @@ public class CarService implements CarRepository {
             System.out.println("New Car  save ✔");
 
             int idCarInImage = fun.readIdCarForImage(conn);
-            String insertImage = String.format("insert into image(url,id_car)values('%s','%s');", car.getUrl(),idCarInImage);
+            String insertImage = String.format("insert into image(url,id_car)values('%s','%s');", car.getUrl(), idCarInImage);
             statement = conn.createStatement();
             statement.executeUpdate(insertImage);
 
