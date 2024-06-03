@@ -8,6 +8,7 @@ public interface CarRepository {
     List<Car> getAllCar();
     List<Car> getCarByType(String typeCare);
     List<Car>getCarByMinPrice();
+    List<Car>getCarByMaxPrice();
     void addCar(String message, Car car);
 
 }
