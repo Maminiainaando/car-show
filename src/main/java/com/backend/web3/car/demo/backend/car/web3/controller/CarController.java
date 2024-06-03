@@ -30,6 +30,10 @@ public class CarController {
     public List<Car> getCarByMinPrice(){
         return carService.getCarByMinPrice();
     }
+    @GetMapping("/allCarByMaxPrice")
+    public List<Car> getCarByMaxPrice(){
+        return carService.getCarByMaxPrice();
+    }
 
     @PostMapping("/carAdd")
     public ResponseEntity<Void> addCar(@RequestBody Car car) {
