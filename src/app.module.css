@@ -1,0 +1,48 @@
+.h1{
+    color: blue;
+    text-align: center;
+}
+/* div label{
+    font-size: larger;
+    color: black;
+}
+form{
+    border: solid 2px blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 50%;
+    padding: 5px 5px;
+    border-radius: 2%;
+    box-shadow: 1px 1px 4px 4px;
+}
+form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+form div input{
+    padding: 6px 5px;
+}
+form div textarea{
+    resize: none;
+    overflow-y: scroll;
+}
+form div label:hover{
+    cursor: pointer;
+}
+form button{
+    padding: 2px 2px;
+    background-color: white;
+    width: 10%;
+    color: black;
+    text-align: center;
+    transition: all ease 1s;
+    border-radius: 2%;
+}
+form button:hover{
+    color: white;
+    background-color: black;
+    text-align: center;
+} */
