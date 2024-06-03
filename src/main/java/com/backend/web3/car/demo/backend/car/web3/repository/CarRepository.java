@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface CarRepository {
     List<Car> getAllCar();
+    List<Car> getCarByType(String typeCare);
     void addCar(String message, Car car);
 
 }
