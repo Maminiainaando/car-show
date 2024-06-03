@@ -7,6 +7,7 @@ import java.util.List;
 public interface CarRepository {
     List<Car> getAllCar();
     List<Car> getCarByType(String typeCare);
+    List<Car>getCarByMinPrice();
     void addCar(String message, Car car);
 
 }
