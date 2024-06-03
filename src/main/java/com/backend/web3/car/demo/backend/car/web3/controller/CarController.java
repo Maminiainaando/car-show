@@ -26,6 +26,10 @@ public class CarController {
     public List<Car> getCarByType(@PathVariable String typeCare){
         return carService.getCarByType(typeCare);
     }
+    @GetMapping("/allCarByTypeMotor/{typeMotor}")
+    public List<Car> getCarByMotorType(@PathVariable String typeMotor){
+        return carService.getCarByMotorType(typeMotor);
+    }
     @GetMapping("/allCarByMinPrice")
     public List<Car> getCarByMinPrice(){
         return carService.getCarByMinPrice();
