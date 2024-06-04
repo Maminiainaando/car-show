@@ -1,5 +1,6 @@
 package com.backend.web3.car.demo.backend.car.web3.function;
 
+import com.backend.web3.car.demo.backend.car.web3.dao.DbConnection;
 import com.backend.web3.car.demo.backend.car.web3.model.Car;
 
 import javax.sql.DataSource;
@@ -112,7 +113,7 @@ public class FunctionUse {
                         
                     WHERE 
                         c.motor_type ILIKE '%s' order by c.id_car desc
-                    """.formatted("%" + typeMotor + "%") ;
+                    """.formatted("%" + typeMotor + "%");
 
             statement = conn.createStatement();
             rs = statement.executeQuery(query);
@@ -249,6 +250,19 @@ public class FunctionUse {
         }
 
         return cars;
+    }
+
+    public void changeStatusCar(Connection conn, String status, int idCar) {
+        Statement statement;
+        try {
+            String query = String.format("update car set status='%s' where id_car='%s';", status, idCar);
+            statement = conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Status Car update  ✔");
+
+        } catch (Exception message) {
+            throw new RuntimeException("fix it : ", message);
+        }
     }
 
 }
