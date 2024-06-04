@@ -7,9 +7,18 @@ import com.backend.web3.car.demo.backend.car.web3.repository.AppointmentReposito
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.util.List;
 
 @Service
 public class AppointmentService implements AppointmentRepository {
+
+    @Override
+    public List<Appointment> getAllAppointment() {
+        DbConnection dbConnection = new DbConnection();
+        Connection conn = dbConnection.conn_db("car_show");
+        FunctionUse fun = new FunctionUse();
+        return fun.getAllAppointment(conn);
+    }
 
     @Override
     public void addAppointment(String message, Appointment appointment) {
