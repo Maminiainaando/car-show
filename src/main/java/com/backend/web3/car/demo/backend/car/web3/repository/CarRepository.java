@@ -11,5 +11,6 @@ public interface CarRepository {
     List<Car>getCarByMaxPrice();
     List<Car>getCarByMotorType(String typeMotor);
     void addCar(String message, Car car);
+    void changeStatusCar(String message , Car car);
 
 }
