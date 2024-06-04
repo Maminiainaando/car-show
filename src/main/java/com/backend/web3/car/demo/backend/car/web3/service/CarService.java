@@ -88,7 +88,7 @@ public class CarService implements CarRepository {
         DbConnection dbConnection = new DbConnection();
         Connection conn = dbConnection.conn_db("car_show");
         FunctionUse fun = new FunctionUse();
-        return fun.getCarByMotorType(conn,typeMotor);
+        return fun.getCarByMotorType(conn, typeMotor);
     }
 
     @Override
@@ -113,5 +113,13 @@ public class CarService implements CarRepository {
         } catch (Exception e) {
             throw new RuntimeException(" fix it ", e);
         }
+    }
+
+    @Override
+    public void changeStatusCar(String message, Car car) {
+        FunctionUse functionUse = new FunctionUse();
+        DbConnection dbConnection = new DbConnection();
+        Connection conn = dbConnection.conn_db("car_show");
+        functionUse.changeStatusCar(conn, car.getStatus(), car.getIdCar());
     }
 }
