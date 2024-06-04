@@ -287,4 +287,32 @@ public class FunctionUse {
         }
     }
 
+    public List<Appointment> getAllAppointment(Connection conn) {
+        List<Appointment> appointments = new ArrayList<>();
+        Statement statement;
+        ResultSet rs = null;
+        try {
+            String query = String.format("select * from appointement;");
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                appointments.add(new Appointment(
+                        rs.getString("name"),
+                        rs.getString("first_name"),
+                        rs.getString("email"),
+                        rs.getString("contact"),
+                        rs.getString("message"),
+                        rs.getString("appointement_date"),
+                        rs.getString("status"),
+                        rs.getInt("id_car")
+                ));
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("fix it : ", e);
+        }
+        return appointments;
+    }
+
 }
