@@ -1,6 +1,6 @@
 package com.backend.web3.car.demo.backend.car.web3.function;
 
-import com.backend.web3.car.demo.backend.car.web3.dao.DbConnection;
+import com.backend.web3.car.demo.backend.car.web3.model.Appointment;
 import com.backend.web3.car.demo.backend.car.web3.model.Car;
 
 import javax.sql.DataSource;
@@ -262,6 +262,28 @@ public class FunctionUse {
 
         } catch (Exception message) {
             throw new RuntimeException("fix it : ", message);
+        }
+    }
+
+    public void addAppointment(Connection conn, Appointment appointment) {
+        Statement statement;
+        try {
+            String query = String.format("" +
+                            "insert into appointement(name,first_name,email," +
+                            "contact,message,appointement_date," +
+                            "status,id_car)values('%s','%s','%s','%s','%s','%s','%s','%s');"
+                    , appointment.getName()
+                    , appointment.getFirstName()
+                    , appointment.getEmail()
+                    , appointment.getContact()
+                    , appointment.getMessage()
+                    , "now()"
+                    , "Pinned", appointment.getIdCar());
+            statement = conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Appointment save ✔");
+        } catch (Exception error) {
+            throw new RuntimeException("fix it : ", error);
         }
     }
 
