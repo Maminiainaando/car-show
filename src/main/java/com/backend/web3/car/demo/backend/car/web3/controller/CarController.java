@@ -44,4 +44,9 @@ public class CarController {
         carService.addCar("add car done", car);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PostMapping("/changeStatusCar")
+    public  ResponseEntity<Void> changeStatusCar(@RequestBody Car car){
+        carService.changeStatusCar("change status ok",car);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
