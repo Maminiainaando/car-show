@@ -1,7 +1,9 @@
-import axios from 'axios';
-
-const api = axios.create({
-    baseURL: 'https://votre-api.com', 
-});
-
-export default api;
+interface MyApiData{
+    idStation: number,
+    location_station: string,
+    system_station: string,
+    stationName: string
+}
+interface MyApiResponse<T>{
+    data: T[];
+}
