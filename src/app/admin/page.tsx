@@ -1,7 +1,6 @@
 "use client"
-import { Admin, ListGuesser, Resource } from "react-admin";
+import { Admin, Resource } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import { StationList } from '../../../components/List/StationList';
 import { AdminList } from '../../../components/List/AdminList';
 import { AdminShow } from '../../../components/Show/ShowAdmin';
 import { AdminEdit } from '../../../components/Edit/AdminEdit';
@@ -11,6 +10,7 @@ import { CarEdit } from '../../../components/Edit/CarEdit';
 import { ImageList } from '../../../components/List/ImageList';
 import { ImageShow } from '../../../components/Show/ImageShow';
 import { ImageEdit } from '../../../components/Edit/ImageEdit';
+import {AppointementList} from '../../../components/List/AppointementList';
 const dataProvider = jsonServerProvider("http://localhost:8080");
 const App = () => {
   return (
@@ -29,6 +29,10 @@ const App = () => {
        edit={CarEdit}
        recordRepresentation="name"
        />
+      <Resource 
+       name="allAppointement"
+       list={AppointementList}
+      />
       <Resource 
        name="image"
        list={ImageList}

@@ -4,27 +4,16 @@ import { Edit, SimpleForm, TextInput } from 'react-admin';
 export const CarEdit = () => (
     <Edit>
         <SimpleForm>
-            <CarRental  color="secondary" />
-            <TextInput source="name"></TextInput>
-            <Description  color="secondary"/>
-            <TextInput source="description"></TextInput>
-            <BrandingWatermark  color="secondary" />
-            <TextInput source="Brand"></TextInput>
-            <Mode  color="secondary" />
-            <TextInput source="Model"></TextInput>
-            <PriceChange  color="secondary" />
-            <TextInput source="Price"></TextInput>
-            <Colorize  color="secondary" />
-            <TextInput source="Color"></TextInput>
-            <Monitor  color="secondary" />
-            <TextInput source="Motor Type"></TextInput>
-            <Power  color="secondary" />
-            <TextInput source="Power"></TextInput>
-            <Place  color="secondary" />
-            <TextInput source="Place number"></TextInput>
-            <QueryStatsOutlined  color="secondary" />
-            <TextInput source="Status"></TextInput>
-            <TypeSpecimen  color="secondary" />
+            <NumberField source="id"></NumberField>
+            <TextInput source="carName"></TextInput>
+            <TextInput source="model"></TextInput>
+            <NumberField source="price"></NumberField>
+            <TextInput source="color"></TextInput>
+            <TextInput source="motorType"></TextInput>
+            <TextInput source="power"></TextInput>
+            <NumberField source="placeNumber"></NumberField>
+            <TextInput source="status"></TextInput>
+            <TextInput source="typeCar"></TextInput>
             <TextInput source="Type"></TextInput>
         </SimpleForm>
     </Edit>

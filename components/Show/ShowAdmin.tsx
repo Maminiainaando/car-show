@@ -3,10 +3,10 @@ import { Email, Password } from "@mui/icons-material";
 export const AdminShow = () => (
     <Show>
         <SimpleShowLayout>
-            <Email color="secondary"/>
-            <EmailField source="email" />
-            <Password color="secondary" />
-            <TextField source="password" />
+            <NumberField source="id" />
+            <TextField source="name"></TextField>
+            <TextField source="email"></TextField>
+            <TextField source="passord"></TextField>
         </SimpleShowLayout>
     </Show>
 );
