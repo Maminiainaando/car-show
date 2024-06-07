@@ -1,33 +1,49 @@
-/**import { AuthProvider, HttpError } from "react-admin";
-import data from "./users.json";
+import { AuthProvider, HttpError } from "react-admin";
+export const authProvider: AuthProvider = {
+  login: async ({ name, password }) => {
+    try {
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, password }),
+      });
 
-/**
- * This authProvider is only for test purposes. Don't use it in production.
- */
-/*export const authProvider: AuthProvider = {
-  login: ({ username, password }) => {
-    const user = data.users.find(
-      (u) => u.username === username && u.password === password
-    );
+      if (!response.ok) {
+        throw new HttpError("Unauthorized", 401, {
+          message: "Invalid name or password",
+        });
+      }
 
-    if (user) {
-      // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-      let { password, ...userToPersist } = user;
-      localStorage.setItem("user", JSON.stringify(userToPersist));
+      const user = await response.json();
+
+      localStorage.setItem("user", JSON.stringify(user));
+
       return Promise.resolve();
-    }
+    } catch (error) {
+      if (error instanceof HttpError) {
+        return Promise.reject(error);
+      }
 
-    return Promise.reject(
-      new HttpError("Unauthorized", 401, {
-        message: "Invalid username or password",
-      })
-    );
+      return Promise.reject(
+        new HttpError("Network error", 500, {
+          message: "Unable to reach the server",
+        })
+      );
+    }
   },
   logout: () => {
     localStorage.removeItem("user");
     return Promise.resolve();
   },
-  checkError: () => Promise.resolve(),
+  checkError: ({ status }) => {
+    if (status === 401 || status === 403) {
+      localStorage.removeItem("user");
+      return Promise.reject();
+    }
+    return Promise.resolve();
+  },
   checkAuth: () =>
     localStorage.getItem("user") ? Promise.resolve() : Promise.reject(),
   getPermissions: () => {
@@ -41,4 +57,4 @@ import data from "./users.json";
   },
 };
 
-export default authProvider;*/
+export default authProvider;

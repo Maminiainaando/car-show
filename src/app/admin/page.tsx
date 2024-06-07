@@ -2,6 +2,7 @@
 import { Admin, Resource } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import { AdminList } from '../../../components/List/AdminList';
+import authProvider from "../authprovider"; 
 import { AdminShow } from '../../../components/Show/ShowAdmin';
 import { AdminEdit } from '../../../components/Edit/AdminEdit';
 import { CarList } from '../../../components/List/CarList';
@@ -14,7 +15,7 @@ import {AppointementList} from '../../../components/List/AppointementList';
 const dataProvider = jsonServerProvider("http://localhost:8080");
 const App = () => {
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={dataProvider} authProvider={authProvider}>
       <Resource 
        name="admin"
        list={AdminList}
