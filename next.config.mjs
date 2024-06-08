@@ -1,9 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
+  reactStrictMode: true,
+  swcMinify: true,
+
+  images: {
       domains: ['drive.google.com'],
-    },
-  };
-  
-  export default nextConfig;
-  
+  },
+
+  async rewrites() {
+      return [
+          {
+              source: '/images/:path*',
+              destination: 'https://drive.google.com/uc?export=view&id=:path*', // Proxy vers Google Drive
+          },
+      ];
+  },
+};
+
+export default nextConfig;

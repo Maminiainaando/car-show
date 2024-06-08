@@ -1,0 +1,79 @@
+/* styl.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f7f6;
+}
+
+.datagrid {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.datagrid h2 {
+    margin-bottom: 20px;
+    color: #4285f4;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.cell {
+    flex: 1;
+    padding: 10px;
+}
+
+.cell.image {
+    flex: none;
+    width: 250px;
+    height: 150px;
+    margin-right: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cell.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cell.jaune {
+    color: #fbbc05;
+}
+
+.cell.status {
+    color: #ea4335;
+}
+
+#Logout {
+    color: black;
+    width: 10vw;
+    height: 6vh;
+    z-index: 3;
+    font-size: 1.5em;
+    border-radius: 1vw;
+    color: #4885e7;
+    border: 1px solid white;
+    cursor: pointer;
+    position: absolute;
+    
+}

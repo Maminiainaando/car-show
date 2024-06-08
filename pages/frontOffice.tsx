@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import Image from 'next/image';
 import styles from "./style.module.css";
 import mitsuoka from "./img/mitsuoka.jpg";
 import Link from 'next/link';
 
 interface Car {
+    id: ReactNode;
     idCar: number;
     carName: string;
     model: string;
@@ -245,7 +246,7 @@ const Cars: React.FC<CarsProps> = ({ cars }) => {
                                 </div>
                                 <div className={styles.details}>
                                     <div>
-                                        <h3>idCar : {car.idCar}</h3>
+                                        <h3>idCar : {car.id}</h3>
                                         <h1>{car.carName}</h1>
                                         <p>model {car.model} , color : {car.color} , motor : {car.motorType}</p>
                                         <p>POWER : {car.power} , PLACE : {car.placeNumber} , Type : {car.typeCar}</p>
