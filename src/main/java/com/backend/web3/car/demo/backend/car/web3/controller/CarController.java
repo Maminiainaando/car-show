@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -46,6 +47,35 @@ public class CarController {
         headers.add("Access-Control-Expose-Headers", "X-Total-Count");
 
         return ResponseEntity.ok().headers(headers).body(carDTOs);
+    }
+    @GetMapping("/allCar/{id}")
+    public ResponseEntity<Map<String, Object>> getCarById(@PathVariable int id) {
+        List<Car> cars = carService.getCarById(id);
+        if (cars.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        CarDTO carDTO = cars.stream()
+                .map(car -> new CarDTO(
+                        car.getIdCar(),
+                        car.getCarName(),
+                        car.getModel(),
+                        car.getPrice(),
+                        car.getColor(),
+                        car.getMotorType(),
+                        car.getPower(),
+                        car.getPlaceNumber(),
+                        car.getStatus(),
+                        car.getTypeCar(),
+                        car.getUrl()
+                ))
+                .findFirst().orElse(null);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Total-Count", "1");
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
+
+        return ResponseEntity.ok().headers(headers).body(Map.of("data", carDTO));
     }
 
 

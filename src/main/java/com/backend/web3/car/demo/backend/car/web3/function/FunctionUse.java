@@ -5,6 +5,7 @@ import com.backend.web3.car.demo.backend.car.web3.model.Car;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -140,6 +141,66 @@ public class FunctionUse {
         return cars;
     }
 
+    public List<Car> getCarById(Connection conn, int idCar) {
+        List<Car> cars = new ArrayList<>();
+        Statement statement;
+        ResultSet rs = null;
+        PreparedStatement preparedStatement = null;
+
+
+        try {
+            String query = """
+                    SELECT 
+                        c.id_car, 
+                        c.car_name, 
+                        c.model, 
+                        c.price, 
+                        c.color, 
+                        c.motor_type, 
+                        c.power, 
+                        c.place_number, 
+                        c.status, 
+                        c.type_car, 
+                        i.url 
+                    FROM 
+                        car c 
+                    INNER JOIN 
+                        image i 
+                    ON 
+                        i.id_car = c.id_car
+                        
+                   WHERE 
+                    c.id_car = ?
+                """;
+
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, idCar);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                cars.add(new Car(
+                        rs.getInt("id_car"),
+                        rs.getString("car_name"),
+                        rs.getString("model"),
+                        rs.getFloat("price"),
+                        rs.getString("color"),
+                        rs.getString("motor_type"),
+                        rs.getString("power"),
+                        rs.getInt("place_number"),
+                        rs.getString("status"),
+                        rs.getString("type_car"),
+                        rs.getString("url")
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("fix it: ", e);
+        }
+
+        return cars;
+    }
+
+
+
     public List<Car> getCarByMinPrice(Connection conn) {
         List<Car> cars = new ArrayList<>();
         Statement statement;
@@ -190,6 +251,42 @@ public class FunctionUse {
         }
 
         return cars;
+    }
+    public List<Appointment> getAppointmentById(Connection conn, int idAppointment) {
+        List<Appointment> appointments = new ArrayList<>();
+        Statement statement;
+        ResultSet rs = null;
+        PreparedStatement preparedStatement = null;
+
+
+        try {
+            String query = """
+                    SELECT 
+                  * from appointement where id_car=?;
+                """;
+
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, idAppointment);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                appointments.add(new Appointment(
+                        rs.getString("name"),
+                        rs.getString("first_name"),
+                        rs.getString("email"),
+                        rs.getString("contact"),
+                        rs.getString("message"),
+                        rs.getString("appointement_date"),
+                        rs.getString("status"),
+                        rs.getInt("id_car")
+
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("fix it: ", e);
+        }
+
+        return appointments;
     }
 
 
@@ -259,6 +356,18 @@ public class FunctionUse {
             statement = conn.createStatement();
             statement.executeUpdate(query);
             System.out.println("Status Car update  ✔");
+
+        } catch (Exception message) {
+            throw new RuntimeException("fix it : ", message);
+        }
+    }
+    public void changeStatusAppointment(Connection conn, String status, int idAppointment) {
+        Statement statement;
+        try {
+            String query = String.format("update appointement set status='%s' where id_car='%s';", status, idAppointment);
+            statement = conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Status Appointment update  ✔");
 
         } catch (Exception message) {
             throw new RuntimeException("fix it : ", message);
