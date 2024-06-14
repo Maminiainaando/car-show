@@ -37,6 +37,7 @@ const CarsList: React.FC<ListProps> = (props) => (
             <TextField source="status" label="Status" id={styles.status} />
             <NumberField source="placeNumber" label="Place Number" id={styles.jaune} />
             <TextField source="color" label="Color" id={styles.jaune}/>
+            <TextField source="motorType" label="motorType" id={styles.jaune}/>
             <TextField source="typeCar" label="Type Car" id={styles.jaune} />
         </Datagrid>
     </List>

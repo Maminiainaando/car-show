@@ -389,6 +389,7 @@
     bottom: 8vh;
     font-size: 1.7em;
     color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
 
@@ -456,4 +457,31 @@
     text-decoration: none;
     border: none;
     cursor: pointer;
+}
+
+#flexible {
+    background-image: url(img/mitsuoka.jpg);
+    background-size: cover;
+
+}
+
+#container_bg {
+    
+    width: 50vw;
+    background: rgba(255, 255, 255, 0.658);
+}
+
+.carId {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.637);
+    background-color: white;
+}
+
+#butSub {
+    height: 7vh;
+    width: 8vw;
+    border-radius: 1vw;
+    background:#007bff;
+    color:#fff;
+    border:1px solid white;
 }

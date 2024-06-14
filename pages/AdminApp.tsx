@@ -6,6 +6,7 @@ import CarsList from './cars';
 import customDataProvider from './customDataProvider';
 import { CarsCreate } from './CarsCreate';
 import CarEdit from './CarEdit';
+import AppointmentEdit from './AppointmentEdit';
 import AppointmentList from './Appointment';
 import { AppointmentCreat } from './AppointmentCreate';
 import style from './styl.module.css';
@@ -22,7 +23,8 @@ const AdminApp: React.FC = () => (
     <Resource
       name="allAppointment"
       list={AppointmentList}
-      create={AppointmentCreat} />
+      create={AppointmentCreat}
+      edit={AppointmentEdit} />
 
   </Admin>
     <Link href="/LoginPage">

@@ -2,6 +2,10 @@ import React, { useState, useEffect, ReactNode } from "react";
 import Image from 'next/image';
 import styles from "./style.module.css";
 import mitsuoka from "./img/mitsuoka.jpg";
+import lubrifiant from './img/engine-oil-and-lubricants-Passenger-Engine-oils-489X289.jpg';
+import service from './img/service-kits.jpeg';
+import cylindre from './img/prometheus-aero-cylinder-head-p-image-175986-grande.jpg';
+import liner from './img/liner1.jpg';
 import Link from 'next/link';
 
 interface Car {
@@ -199,22 +203,22 @@ const Cars: React.FC<CarsProps> = ({ cars }) => {
                 <div className={styles.conatiner4listeAffiche}>
                     <div className={styles.containtList4}>
                         <div className={styles.firstElement}>
-                            <Image src={mitsuoka} alt="gente" className={styles.image4} />
+                            <Image src={service} alt="gente" className={styles.image4} />
                             <h3 className={styles.ServiceKits}>Service Kits</h3>
                         </div>
                         <div className={styles.separation2}></div>
                         <div className={styles.firstElement}>
-                            <Image src={mitsuoka} alt="gente" className={styles.image4} />
+                            <Image src={cylindre} alt="gente" className={styles.image4} />
                             <h3 className={styles.Cylinder_Heads}>Cylinder Heads</h3>
                         </div>
                         <div className={styles.separation2}></div>
                         <div className={styles.firstElement}>
-                            <Image src={mitsuoka} alt="gente" className={styles.image4} />
+                            <Image src={lubrifiant} alt="gente" className={styles.image4} />
                             <h3 className={styles.Lubricants}>&nbsp;Lubricants</h3>
                         </div>
                         <div className={styles.separation2}></div>
                         <div className={styles.firstElement}>
-                            <Image src={mitsuoka} alt="gente" className={styles.image4} />
+                            <Image src={liner} alt="gente" className={styles.image4} />
                             <h3 className={styles.Pistons_Liners}>Pistons Liners </h3>
                         </div>
                     </div>
@@ -252,7 +256,7 @@ const Cars: React.FC<CarsProps> = ({ cars }) => {
                                         <p>POWER : {car.power} , PLACE : {car.placeNumber} , Type : {car.typeCar}</p>
                                         <h1>Status : {car.status}</h1>
                                         <h2><sup>Ar</sup>{car.price}</h2>
-                                        <Link href={"/form"}>
+                                        <Link href={"/Forme"}>
                                         <button id={styles.a}>APPOINTMENT</button>
                                         </Link>
                                     </div>

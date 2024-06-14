@@ -41,16 +41,27 @@ const customDataProvider: DataProvider = {
                 headers: new Headers({ 'Content-Type': 'application/json' }),
             };
             return httpClient(url, options).then(({ json }) => ({ data: json }));
-        }
+        }else if(resource==='allAppointment'){
+          const url='http://localhost:8080/changeStatusAppointment';
+          const options = {
+            method: 'POST',
+            body: JSON.stringify(params.data),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        };
+        return httpClient(url, options).then(({ json }) => ({ data: json }));
+    }
         return dataProvider.update(resource, params);
     },
     getOne: (resource: string, params: GetOneParams): Promise<GetOneResult> => {
         if (resource === 'allCar') {
             const url = `http://localhost:8080/allCar/${params.id}`;
             return httpClient(url).then(({ json }) => ({ data: json.data }));
+        }else if(resource==='allAppointment'){
+            const url=`http://localhost:8080/allAppointment/${params.id}`;
+            return httpClient(url).then(({json})=>({data: json.data}));
         }
         return dataProvider.getOne(resource, params);
-    }
+    },
 };
 
 export default customDataProvider;
